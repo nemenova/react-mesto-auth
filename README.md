@@ -1,7 +1,23 @@
-# Здесь будет ваш проект на Реакте с авторизацией и регистрацией
+# Место
 
-Используйте ваши предыдущие наработки по проекту Mesto. Это может быть работа 11-го спринта или его улучшенная версия после 2-х последних спринтов. 
+**Social media about traveling interface.** You can set your profile and make your own cards with voyages descriptions.         
 
-Все запросы на авторизацию, регистрацию и проверку токена должны работать через сервис `https://auth.nomoreparties.co`. Остальные запросы, не относящиеся к этой проектной работе могут быть к бэкенду из предыдущих спринтов.
+technologies used: 
+React (hooks)
+CRA
+JS ES6
+API
+Webpack
+BEM  
 
-Успехов!
+new: in these version you can do absolutely nothing but it's temporarily, we will provide new features processed by new technology.      
+
+Lang: html5, css, js         
+
+To open: any browser (written with Chrome 88.0.4324.146 using)       
+                             
+
+**View the result: https://nemenova.github.io/mesto/**        
+it's another project, just to demonstrate
+
+**Coming soon:** wider description, tbd ability to search info about places and full photo gallery for every place. 

@@ -1,0 +1,9 @@
+.btn-opacity-change{
+     transition: opacity 0.3s linear 0s;
+}
+.btn-opacity-change:hover{
+     opacity: 60%;
+}
+.btn-opacity-change:focus{
+     outline: none;
+}

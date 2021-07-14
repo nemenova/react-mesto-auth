@@ -1,0 +1,9 @@
+ .black-btn-style{
+     transition: opacity 0.3s linear 0s;
+}
+ .black-btn-style:hover{
+     opacity:80%;
+}
+ .black-btn-style:focus{
+     outline: none;
+}
