@@ -10,6 +10,7 @@ import EditProfilePopup from './EditProfilePopup';
 import api from '../utils/api'
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 import Register from './Register';
+import Login from './Login'
 
 function App() {
     const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(false);
@@ -103,7 +104,7 @@ function App() {
         <CurrentUserContext.Provider value={currentUser}>
             <Header />
             <Route path="/">
-                <Register />
+                <Login />
             </ Route>
             <Main cards={cards} onCardLike={handleCardLike} onCardDelete={handleCardDelete} onCardClick={handleCardClick} onEditAvatar={handleEditAvatarClick} onEditProfile={handleEditProfileClick} onAddPlace={handleAddPlaceClick} />
             <Footer />
