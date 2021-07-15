@@ -1,0 +1,24 @@
+ .register__submit-btn{
+     background-color: white;
+     color: black;
+     font-weight: 400;
+     font-size: 18px;
+     line-height: 22px;
+     align-items: center;
+     justify-content: center;
+     border: none;
+     width: 358px;
+     min-height: 50px;
+     border-radius: 2px;
+     cursor: pointer;
+     display: flex;
+     margin: 168px auto 15px;
+}
+@media screen and (max-width: 768px) {
+     .register__submit-btn {
+        width: 238px;
+        min-height: 46px;
+        font-size: 14px;
+        line-height: 17px;
+    }
+ }

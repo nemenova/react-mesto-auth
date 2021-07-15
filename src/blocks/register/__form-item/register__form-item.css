@@ -1,0 +1,17 @@
+ .register__form-item{
+     border: 0;
+     width: 100%;
+     height: 27px;
+     box-sizing: border-box;
+     border-bottom: 1px solid #bcbcc4;
+     background-color: transparent;
+     margin-top: 30px;
+     font-weight: 400;
+     font-size: 14px;
+     line-height: 17px;
+     color: white;
+     padding-bottom: 13px;
+}
+ .register__form-item:focus {
+     outline-color: #bcbcc4;
+}
