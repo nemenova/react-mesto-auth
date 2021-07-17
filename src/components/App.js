@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import ImagePopup from './ImagePopup';
 import Header from './Header';
 import Main from './Main'
@@ -12,6 +12,7 @@ import { CurrentUserContext } from '../contexts/CurrentUserContext';
 import Register from './Register';
 import Login from './Login'
 import InfoTooltip from "./InfoTooltip";
+import ProtectedRoute from "./ProtectedRoute";
 
 function App() {
     const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(false);
@@ -20,7 +21,7 @@ function App() {
     const [selectedCard, setSelectedCard] = React.useState(null);
     const [currentUser, setCurrentUser] = React.useState({});
     const [cards, setCards] = React.useState([]);
-    const [loggedIn, setLoggedIn] = React.useState(false);
+    const [loggedIn, setLoggedIn] = React.useState(true);
 
     React.useEffect(() => {
         Promise.all([api.getUserInfo(), api.getCards()])
@@ -95,7 +96,7 @@ function App() {
     function handleCardClick(card) {
         setSelectedCard(card)
     }
-    function closeAllPopups() { 
+    function closeAllPopups() {
         setIsEditAvatarPopupOpen(false);
         setIsEditProfilePopupOpen(false);
         setIsAddPlacePopupOpen(false)
@@ -105,11 +106,24 @@ function App() {
     return (
         <CurrentUserContext.Provider value={currentUser}>
             <Header />
-            {/* <Route path="/">
-                <Login />
-            </ Route> */}
-            {/* <InfoTooltip status={false} onClose={closeAllPopups} /> */}
-            <Main cards={cards} onCardLike={handleCardLike} onCardDelete={handleCardDelete} onCardClick={handleCardClick} onEditAvatar={handleEditAvatarClick} onEditProfile={handleEditProfileClick} onAddPlace={handleAddPlaceClick} />
+            <Switch>
+                <Route exact path="/">
+                    {loggedIn ? <Redirect to="/main" /> : <Redirect to="/signin" />}
+                </Route> 
+                <Route path="/signup">
+                    <Register />
+                </ Route>
+                <Route path="/signin">
+                    <Login />
+                </ Route>
+                {/* <InfoTooltip status={false} onClose={closeAllPopups} /> */}
+                <ProtectedRoute
+                    path="/main"
+                    loggedIn={loggedIn}
+                    component={Main} cards={cards} onCardLike={handleCardLike} onCardDelete={handleCardDelete} onCardClick={handleCardClick} onEditAvatar={handleEditAvatarClick} onEditProfile={handleEditProfileClick} onAddPlace={handleAddPlaceClick}
+                />
+                
+            </Switch>
             <Footer />
             <EditAvatarPopup onUpdateAvatar={handleUpdateAvatar} isOpened={isEditAvatarPopupOpen} onClose={closeAllPopups} />
             <AddPlacePopup onAddPlace={handleAddPlaceSubmit} isOpened={isAddPlacePopupOpen} onClose={closeAllPopups} />

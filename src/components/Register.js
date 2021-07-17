@@ -20,7 +20,7 @@ function Register() {
                 </fieldset>
                     <button type="submit" className="register__submit-btn btn-opacity-change">Зарегистрироваться</button>
                 </form>
-            <span className="register__capture">Уже зарегистрированы? <Link className="register__span-link" to="/reviews">Войти</Link></span>
+            <span className="register__capture">Уже зарегистрированы? <Link className="register__span-link" to="/signin">Войти</Link></span>
         </>
     )
    
