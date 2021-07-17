@@ -11,6 +11,7 @@ import api from '../utils/api'
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 import Register from './Register';
 import Login from './Login'
+import InfoTooltip from "./InfoTooltip";
 
 function App() {
     const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(false);
@@ -19,6 +20,7 @@ function App() {
     const [selectedCard, setSelectedCard] = React.useState(null);
     const [currentUser, setCurrentUser] = React.useState({});
     const [cards, setCards] = React.useState([]);
+    const [loggedIn, setLoggedIn] = React.useState(false);
 
     React.useEffect(() => {
         Promise.all([api.getUserInfo(), api.getCards()])
@@ -93,7 +95,7 @@ function App() {
     function handleCardClick(card) {
         setSelectedCard(card)
     }
-    function closeAllPopups() {
+    function closeAllPopups() { 
         setIsEditAvatarPopupOpen(false);
         setIsEditProfilePopupOpen(false);
         setIsAddPlacePopupOpen(false)
@@ -103,9 +105,10 @@ function App() {
     return (
         <CurrentUserContext.Provider value={currentUser}>
             <Header />
-            <Route path="/">
+            {/* <Route path="/">
                 <Login />
-            </ Route>
+            </ Route> */}
+            {/* <InfoTooltip status={false} onClose={closeAllPopups} /> */}
             <Main cards={cards} onCardLike={handleCardLike} onCardDelete={handleCardDelete} onCardClick={handleCardClick} onEditAvatar={handleEditAvatarClick} onEditProfile={handleEditProfileClick} onAddPlace={handleAddPlaceClick} />
             <Footer />
             <EditAvatarPopup onUpdateAvatar={handleUpdateAvatar} isOpened={isEditAvatarPopupOpen} onClose={closeAllPopups} />

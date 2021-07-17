@@ -48,3 +48,5 @@
 @import url(./blocks/register/__capture/register__capture.css);
 @import url(./blocks/register/__span-link/register__span-link.css);
 @import url(./blocks/register/__form-item/register__form-item.css);
+@import url(./blocks/Info-tooltip/__title/info-tooltip__title.css);
+@import url(./blocks/Info-tooltip/__status-icon/info-tooltip__status-icon.css);

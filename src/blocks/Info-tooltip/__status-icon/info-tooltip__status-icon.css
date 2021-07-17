@@ -1,0 +1,6 @@
+.info-tooltip__status-icon{
+    max-width: 120px;
+    display: flex;
+    margin: auto;
+    padding-top: 30px;
+}
