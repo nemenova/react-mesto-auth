@@ -40,26 +40,18 @@ function App() {
             })
     }, [])
     React.useEffect(() => {
-        console.log('fghjk')
-       
-            const token = localStorage.getItem('token');
-            console.log(token)
-            // здесь будем проверять токен
-        //    if(token){
-                Auth.getContent()
-                    
-                    .then((res) => {
-                        console.log(res)
-                        setEmail(res.data.email)
-                        setLoggedIn(true)
-                        history.push('/')
+        Auth.getContent()
 
-                    })
-                    .catch((err) => {
-                        console.log(err); // выведем ошибку в консоль
-                    })
-        //    }
-        
+            .then((res) => {
+                setEmail(res.data.email)
+                setLoggedIn(true)
+                history.push('/')
+
+            })
+            .catch((err) => {
+                console.log(err); // выведем ошибку в консоль
+                setLoggedIn(false)
+            })
     }, [history])
 
     function handleCardLike(card) {
@@ -143,11 +135,6 @@ function App() {
             .catch(err => console.log(err));
     }
 
-
-
-
-
-
     function handleEditAvatarClick() {
         setIsEditAvatarPopupOpen(true)
     }
@@ -172,23 +159,19 @@ function App() {
         <CurrentUserContext.Provider value={currentUser}>
             <Header loggedIn={loggedIn} values={email} onSignOut={handleSignOut} />
             <Switch>
-                {/* <Route exact path="/">
-                    {loggedIn ? <Redirect to="/" /> : <Redirect to="/signin" />}
-                </Route>  */}
                 <Route path="/signup">
                     <Register onRegister={handleRegister} />
-
                 </ Route>
                 <Route path="/signin">
                     <Login onLogin={handleSignIn} />
                 </ Route>
-
                 <ProtectedRoute
                     path="/"
                     loggedIn={loggedIn}
-                    component={Main} cards={cards} onCardLike={handleCardLike} onCardDelete={handleCardDelete} onCardClick={handleCardClick} onEditAvatar={handleEditAvatarClick} onEditProfile={handleEditProfileClick} onAddPlace={handleAddPlaceClick}
+                    component={Main} cards={cards} onCardLike={handleCardLike} onCardDelete={handleCardDelete} 
+                    onCardClick={handleCardClick} onEditAvatar={handleEditAvatarClick} onEditProfile={handleEditProfileClick} 
+                    onAddPlace={handleAddPlaceClick}
                 />
-
             </Switch>
             <Footer />
             <EditAvatarPopup onUpdateAvatar={handleUpdateAvatar} isOpened={isEditAvatarPopupOpen} onClose={closeAllPopups} />

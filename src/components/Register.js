@@ -30,7 +30,7 @@ function Register(props) {
                         className="register__form-item form__item_el_name" required></input>
                     <span className="form__item-error name-input-error"></span>
                     <input id="password-input" name="password" placeholder="Пароль" type="password" minLength="2" maxLength="200"
-                        onChange={handleChangePassword} 
+                        onChange={handleChangePassword}
                         value={password}
                         className="register__form-item form__item_el_about" required></input>
                     <span className="form__item-error about-input-error"></span>
@@ -40,9 +40,7 @@ function Register(props) {
             <span className="register__capture">Уже зарегистрированы?
             <Link className="register__span-link" to="/signin">Войти</Link>
             </span>
-            
         </>
     )
-
 }
 export default Register;

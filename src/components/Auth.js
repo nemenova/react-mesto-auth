@@ -7,11 +7,11 @@ export const register = (password, email) => {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         },
-        body: 
+        body:
             JSON.stringify({ password, email })
-            // "password": `${password}`,
-            // "email": `${email}`
-        
+        // "password": `${password}`,
+        // "email": `${email}`
+
     })
         .then((response) => {
             try {
@@ -38,11 +38,11 @@ export const authorize = (password, email) => {
     })
         .then((response => response.json()))
         .then((data) => {
-           
-                console.log(data)
+
+            console.log(data)
             localStorage.setItem('token', data.token);
-                return data;
-            
+            return data;
+
         })
         .catch(err => console.log(err))
 };
