@@ -42,11 +42,12 @@ function App() {
     React.useEffect(() => {
         console.log('fghjk')
        
-            // const token = localStorage.getItem('token');
-            // console.log(token)
+            const token = localStorage.getItem('token');
+            console.log(token)
             // здесь будем проверять токен
-           
+        //    if(token){
                 Auth.getContent()
+                    
                     .then((res) => {
                         console.log(res)
                         setEmail(res.data.email)
@@ -57,7 +58,7 @@ function App() {
                     .catch((err) => {
                         console.log(err); // выведем ошибку в консоль
                     })
-            
+        //    }
         
     }, [history])
 
@@ -129,6 +130,7 @@ function App() {
 
     function handleSignOut() {
         localStorage.removeItem('token');
+        setLoggedIn(false)
         history.push('/signin');
     }
 
@@ -168,7 +170,7 @@ function App() {
 
     return (
         <CurrentUserContext.Provider value={currentUser}>
-            <Header values={email} onSignOut={handleSignOut} />
+            <Header loggedIn={loggedIn} values={email} onSignOut={handleSignOut} />
             <Switch>
                 {/* <Route exact path="/">
                     {loggedIn ? <Redirect to="/" /> : <Redirect to="/signin" />}
