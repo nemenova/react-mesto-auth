@@ -7,10 +7,11 @@ export const register = (password, email) => {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         },
-        body: {
-            "password": password,
-            "email": email
-        }
+        body: 
+            JSON.stringify({ password, email })
+            // "password": `${password}`,
+            // "email": `${email}`
+        
     })
         .then((response) => {
             try {
@@ -27,50 +28,31 @@ export const register = (password, email) => {
         .catch((err) => console.log(err));
 };
 
-// export const saveToken = (password, email) => {
-//     return fetch(`${BASE_URL}/signin`, {
-//         method: 'POST',
-//         headers: {
-//             'Content-Type': 'application/json'
-//         },
-//         body: {
-//             "password": password,
-//             "email": email
-//         }
-//     })
-//         .then(res => res.json())
-//         .then((data) => {
-//             // сохраняем токен
-//             localStorage.setItem('token', data.token);
-//         }); 
-// }
-
-
 export const authorize = (password, email) => {
     return fetch(`${BASE_URL}/signin`, {
         method: 'POST',
         headers: {
-            'Accept': 'application/json',
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({ password, email })
     })
         .then((response => response.json()))
         .then((data) => {
-            if (data.jwt) {
-                localStorage.setItem('jwt', data.jwt);
+           
+                console.log(data)
+            localStorage.setItem('token', data.token);
                 return data;
-            }
+            
         })
         .catch(err => console.log(err))
 };
 
-export const getContent = (token) => {
+export const getContent = () => {
     return fetch(`${BASE_URL}/users/me`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`,
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
         }
     })
         .then(res => res.json())

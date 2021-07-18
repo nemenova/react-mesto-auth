@@ -53,3 +53,4 @@
 @import url(./blocks/menu/menu.css);
 @import url(./blocks/menu/__link/menu__link.css);
 @import url(./blocks/menu/__exit-btn/menu__exit-btn.css);
+@import url(./blocks/menu/__email/menu__email.css);

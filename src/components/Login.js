@@ -1,9 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom'; 
 
 function Login(props) {
-    const [email, setEmail] = React.useState(' ');
-    const [password, setPassword] = React.useState(' ');
+    const [email, setEmail] = React.useState('');
+    const [password, setPassword] = React.useState('');
     
     function handleChangeEmail(e) {
         setEmail(e.target.value);
@@ -13,10 +12,13 @@ function Login(props) {
     }
     function handleSubmit(e) {
         e.preventDefault();
-        if (!email || !password) {
-            return;
-        }
-        props.onLogin();
+        // if (!email || !password) {
+        //     return;
+        // }
+        props.onLogin(
+            password,
+            email
+        );
     }
     return(
         <>
