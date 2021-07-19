@@ -1,5 +1,12 @@
 export const BASE_URL = 'https://auth.nomoreparties.co';
 
+function checkResponse(res) {
+    if (res.status === 200) {
+        return res.json();
+    }
+    return console.log(`${res.status}`);
+}
+
 export const register = (password, email) => {
     return fetch(`${BASE_URL}/signup`, {
         method: 'POST',
@@ -9,23 +16,13 @@ export const register = (password, email) => {
         },
         body:
             JSON.stringify({ password, email })
-        // "password": `${password}`,
-        // "email": `${email}`
-
     })
         .then((response) => {
-            try {
-                if (response.status === 200) {
-                    return response.json();
-                }
-            } catch (e) {
-                return (e)
-            }
+            checkResponse(response);
         })
         .then((res) => {
             return res;
         })
-        .catch((err) => console.log(err));
 };
 
 export const authorize = (password, email) => {
@@ -36,15 +33,12 @@ export const authorize = (password, email) => {
         },
         body: JSON.stringify({ password, email })
     })
-        .then((response => response.json()))
+        .then((response => checkResponse(response)))
         .then((data) => {
-
             console.log(data)
             localStorage.setItem('token', data.token);
             return data;
-
         })
-        .catch(err => console.log(err))
 };
 
 export const getContent = () => {
@@ -55,7 +49,6 @@ export const getContent = () => {
             'Authorization': `Bearer ${localStorage.getItem('token')}`,
         }
     })
-        .then(res => res.json())
+        .then(res => checkResponse(res))
         .then(data => data)
-        .catch(err => console.log(err))
 } 

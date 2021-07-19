@@ -6,7 +6,6 @@ function InfoTooltip(props) {
 
     return (
         <div className={`popup popup_type_${props.name} ${props.isOpened ? ('popup_opened') : ''} `}>
-           
             <div className="popup__container">
                 <button onClick={props.onClose} type="button" className="popup__close-btn btn-opacity-change">+</button>
                 <img src={props.status ? icon__success : icon__decline} alt="иконка" className="info-tooltip__status-icon"></img>

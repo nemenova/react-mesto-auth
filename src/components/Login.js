@@ -23,7 +23,7 @@ function Login(props) {
     return (
         <>
             <h2 className="register__title">Вход</h2>
-            <form name='login' onSubmit={handleSubmit} className="form" noValidate>
+            <form name='login' onSubmit={handleSubmit} className="form">
                 <fieldset className="form__input">
                     <input id="email-input" name="email" placeholder="Email" type="email" minLength="4" maxLength="40"
                         onChange={handleChangeEmail} value={email}
