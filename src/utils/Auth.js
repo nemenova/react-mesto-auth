@@ -4,7 +4,7 @@ function checkResponse(res) {
     if (res.status === 200) {
         return res.json();
     }
-    return console.log(`${res.status}`);
+    return Promise.reject(`${res.status}`);
 }
 
 export const register = (password, email) => {
