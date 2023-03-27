@@ -13,6 +13,11 @@ BEM
 ### To start:    
 Clone repo to your local machine. Then install dependencies by
 ```javascript
+npm install
+``` 
+Then use
+
+```javascript
 npm run build
 ``` 
 to start it in production mode or 
